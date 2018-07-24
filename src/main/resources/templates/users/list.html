@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${usermodel.title}">soker</title>
+</head>
+
+<body>
+<div th:replace="~{fragments/header :: header}">...</div>
+
+<table border="1">
+    <thead>
+    <tr>
+        <td>id</td>
+        <td>name</td>
+        <td>email</td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:if="${usermodel.userlist.size()} eq 0">
+        <td>no data</td>
+    </tr>
+    <tr th:each="user : ${usermodel.userlist}">
+        <td th:text="user.id"></td>
+        <td th:text="user.name"></td>
+        <td th:text="user.email"></td>
+    </tr>
+    </tbody>
+</table>
+<div th:replace="~{fragments/footer :: footer}">...</div>
+</body>
+
+</html>
