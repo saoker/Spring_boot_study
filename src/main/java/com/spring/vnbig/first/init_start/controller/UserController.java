@@ -14,7 +14,7 @@ public class UserController {
     @Autowired
     UserRepository ur;
 
-    @GetMapping
+    @RequestMapping
     public ModelAndView getAllusers(Model md) {
         md.addAttribute("userlist", ur.getAllUser());
         md.addAttribute("title", "用户列表");
@@ -22,7 +22,7 @@ public class UserController {
     }
 
     @RequestMapping("{id}")
-    public ModelAndView view(@PathVariable("id") Long id, Model md) {
+    public ModelAndView view(@PathVariable("id") long id, Model md) {
         User userTemp = ur.getUserbyId(id);
         md.addAttribute("user", userTemp);
         md.addAttribute("title", "查看用户");
@@ -30,7 +30,7 @@ public class UserController {
     }
 
     @RequestMapping("/form")
-    public ModelAndView adduser(@PathVariable("id") Long id, Model md) {
+    public ModelAndView adduser(Model md) {
         md.addAttribute("user", new User());
         md.addAttribute("title", "添加新用户");
         return new ModelAndView("users/form", "usermodel", md);
@@ -42,16 +42,16 @@ public class UserController {
      * @param user
      * @return
      */
-    @PostMapping
+    @RequestMapping("/create")
     public ModelAndView create(User user) {
-        user = ur.addUser(user);
+        User usertemp = ur.addUser(user);
         return new ModelAndView("redirect:/users");
     }
 
     @RequestMapping("/delete/{id}")
-    public ModelAndView deleteuser(@PathVariable("id") Long id, Model md) {
+    public ModelAndView deleteuser(@PathVariable("id") long id, Model md) {
         ur.deleteUser(id);
-        md.addAttribute("userist", ur.getAllUser());
+        md.addAttribute("userlist", ur.getAllUser());
         md.addAttribute("title", "删除用户");
         return new ModelAndView("users/list", "usermodel", md);
     }
@@ -62,11 +62,11 @@ public class UserController {
      * @return
      */
     @GetMapping(value = "modify/{id}")
-    public ModelAndView modifyForm(@PathVariable("id") Long id, Model model) {
+    public ModelAndView modifyForm(@PathVariable("id") long id, Model model) {
         User user = ur.getUserbyId(id);
         model.addAttribute("user", user);
         model.addAttribute("title", "修改用户");
-        return new ModelAndView("users/form", "userModel", model);
+        return new ModelAndView("users/form", "usermodel", model);
     }
 
 }

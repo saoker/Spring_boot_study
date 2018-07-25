@@ -10,24 +10,21 @@ import java.util.concurrent.atomic.AtomicLong;
 
 @Repository
 public class UserRepositoryImpl implements UserRepository {
-    public static AtomicLong atomicId;
+    public static AtomicLong atomicId = new AtomicLong();
     public ConcurrentMap<Long, User> userMap = new ConcurrentHashMap<Long, User>();
 
 
-    public UserRepositoryImpl(){
+    public UserRepositoryImpl() {
         User user = new User();
-        user.setId((long) 30);
+        user.setId(30);
         user.setName("dudu");
+        user.setEmail("@qq.com");
         this.addUser(user);
     }
 
     @Override
     public User getUserbyId(Long id) {
-        User usertemp = userMap.get(id);
-        if (usertemp == null) {
-            return null;
-        }
-        return usertemp;
+        return userMap.get(id);
     }
 
     @Override
@@ -38,7 +35,7 @@ public class UserRepositoryImpl implements UserRepository {
     @Override
     public User addUser(User user) {
         Long id = user.getId();
-        if (id == null) {
+        if (id <= 0) {
             id = atomicId.incrementAndGet();
             user.setId(id);
         }

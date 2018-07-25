@@ -10,6 +10,11 @@
 <body>
 <div th:replace="~{fragments/header :: header}">...</div>
 
+<h3 th:text="${usermodel.title}">页面名称</h3>
+
+<a href="/users/form">创建用户</a>
+<br>
+<br>
 <table border="1">
     <thead>
     <tr>
@@ -20,16 +25,63 @@
     </thead>
     <tbody>
     <tr th:if="${usermodel.userlist.size()} eq 0">
-        <td>no data</td>
+        <td colspan="3">no data</td>
     </tr>
     <tr th:each="user : ${usermodel.userlist}">
-        <td th:text="user.id"></td>
-        <td th:text="user.name"></td>
-        <td th:text="user.email"></td>
+        <td th:text="${user.id}"></td>
+
+        <td>
+            <a href="view.html" th:href="@{'/users/'+ ${user.id}}" th:text="${user.name}">name</a>
+        </td>
+
+        <td th:text="${user.email}"></td>
+    </tr>
+    </tbody>
+</table>
+<br>
+<br>
+<div th:replace="~{fragments/footer :: footer}">...</div>
+</body>
+
+</html>
+
+
+<!--
+
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <title th:text="${usermodel.title}">welcome</title>
+</head>
+<body>
+<div th:replace="~{fragments/header :: header}">...</div>
+<h3 th:text="${usermodel.title}">Welcome to waylau.com</h3>
+<div>
+    <a href="/users/form.html">创建用户</a>
+</div>
+<table border="1">
+    <thead>
+    <tr>
+        <td>ID</td>
+        <td>Age</td>
+        <td>Name</td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:if="${usermodel.userlist.size()} eq 0">
+        <td colspan="3">没有用户信息！！</td>
+    </tr>
+    <tr th:each="user : ${usermodel.userlist}">
+        <td th:text="${user.id}">1</td>
+        <td th:text="${user.email}">11</td>
+        <td><a href="view.html" th:href="@{'/users/' + ${user.id}}"
+               th:text="${user.name}">waylau</a></td>
     </tr>
     </tbody>
 </table>
 <div th:replace="~{fragments/footer :: footer}">...</div>
 </body>
-
 </html>
+-->

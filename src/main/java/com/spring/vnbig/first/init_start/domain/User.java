@@ -2,7 +2,7 @@ package com.spring.vnbig.first.init_start.domain;
 
 public class User {
 
-    Long id;
+    long id;
     String name;
     String email;
 
@@ -10,7 +10,7 @@ public class User {
 
     }
 
-    public User(Long id, String name, String email) {
+    public User(long id, String name, String email) {
         this.id = id;
         this.name = name;
         this.email = email;
@@ -25,11 +25,11 @@ public class User {
     }
 
 
-    public Long getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(long id) {
         this.id = id;
     }
 
