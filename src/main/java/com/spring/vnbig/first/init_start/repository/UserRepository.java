@@ -1,10 +1,17 @@
 package com.spring.vnbig.first.init_start.repository;
 
 import com.spring.vnbig.first.init_start.domain.User;
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
-
 import java.util.List;
 
+
+public interface UserRepository extends CrudRepository<User, Long> {
+}
+
+
+
+/*
 
 public interface UserRepository {
 
@@ -14,5 +21,6 @@ public interface UserRepository {
 
     public User addUser(User user);
 
-    public List<User> getAllUser();
+    public List<User> findAll();
 }
+*/

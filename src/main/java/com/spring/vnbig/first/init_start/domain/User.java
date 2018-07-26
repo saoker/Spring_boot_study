@@ -1,12 +1,21 @@
 package com.spring.vnbig.first.init_start.domain;
 
+import javax.persistence.*;
+
+@Entity
 public class User {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)//自增长
     long id;
+
+    @Column(nullable = false)
     String name;
+
+    @Column(nullable = false)
     String email;
 
-    public User() {
+    protected User() {// JPA 的规范要求无参构造函数；设为 protected 防止直接使用
 
     }
 
