@@ -49,4 +49,14 @@ public class User {
     public void setName(String name) {
         this.name = name;
     }
+
+    @Override
+    public String toString() {
+//        return "User{" +
+//                "id=" + id +
+//                ", name='" + name + '\'' +
+//                ", email='" + email + '\'' +
+//                '}';
+        return  String.format("User['id=%d',name='%s',email='%s']",id,name,email);
+    }
 }

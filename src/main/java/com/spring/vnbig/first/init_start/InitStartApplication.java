@@ -2,11 +2,26 @@ package com.spring.vnbig.first.init_start;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.support.SpringBootServletInitializer;
+//
+//@SpringBootApplication
+//public class InitStartApplication {
+//
+//	public static void main(String[] args) {
+//		SpringApplication.run(InitStartApplication.class, args);
+//	}
+//}
 
+/*打war专用*/
 @SpringBootApplication
-public class InitStartApplication {
+public class InitStartApplication extends SpringBootServletInitializer {
 
-	public static void main(String[] args) {
+	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+		return application.sources(InitStartApplication.class);
+	}
+
+	public static void main(String[] args) throws Exception {
 		SpringApplication.run(InitStartApplication.class, args);
 	}
 }

@@ -1,3 +1,6 @@
+apply plugin: 'war'// 打包war专用
+
+
 buildscript {
 	ext {
 		springBootVersion = '1.5.2.RELEASE'
@@ -39,6 +42,12 @@ dependencies {
 	compile('org.springframework.boot:spring-boot-starter-web')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 
+	// 打包war专用
+	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat:1.5.2.RELEASE'
+	// 阿里json包
+	compile group: 'com.alibaba', name: 'fastjson', version: '1.2.12'
+
+
 	// 添加 Thymeleaf 的依赖
 	compile('org.springframework.boot:spring-boot-starter-thymeleaf')
 
@@ -47,4 +56,6 @@ dependencies {
 
 	// 添加 MySQL连接驱动 的依赖
 	compile('mysql:mysql-connector-java:6.0.5')
+
+
 }

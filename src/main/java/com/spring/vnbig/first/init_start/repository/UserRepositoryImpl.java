@@ -15,7 +15,6 @@ public class UserRepositoryImpl implements UserRepository {
     public static AtomicLong atomicId = new AtomicLong();
     public ConcurrentMap<Long, User> userMap = new ConcurrentHashMap<Long, User>();
 
-
     public UserRepositoryImpl() {
 //        User user = new User();
 //        user.setId(30);
@@ -25,38 +24,13 @@ public class UserRepositoryImpl implements UserRepository {
     }
 
     @Override
-    public <S extends User> Iterable<S> save(Iterable<S> entities) {
-        return null;
-    }
-
-    @Override
     public User findOne(Long id) {
         return userMap.get(id);
     }
 
     @Override
-    public boolean exists(Long aLong) {
-        return false;
-    }
-
-    @Override
     public void delete(Long id) {
         userMap.remove(id);
-    }
-
-    @Override
-    public void delete(User entity) {
-
-    }
-
-    @Override
-    public void delete(Iterable<? extends User> entities) {
-
-    }
-
-    @Override
-    public void deleteAll() {
-
     }
 
     @Override
@@ -75,13 +49,4 @@ public class UserRepositoryImpl implements UserRepository {
         return new ArrayList<User>(userMap.values());
     }
 
-    @Override
-    public Iterable<User> findAll(Iterable<Long> longs) {
-        return null;
-    }
-
-    @Override
-    public long count() {
-        return 0;
-    }
 }*/

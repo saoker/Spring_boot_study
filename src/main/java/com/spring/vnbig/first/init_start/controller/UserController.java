@@ -14,6 +14,9 @@ public class UserController {
     @Autowired
     private UserRepository ur;
 
+
+
+
     @RequestMapping
     public ModelAndView getAllusers(Model md) {
         md.addAttribute("userlist", ur.findAll());
